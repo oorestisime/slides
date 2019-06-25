@@ -1,0 +1,408 @@
+import { Box, Image, Text, Heading } from "grommet";
+import { Appear, Head } from "mdx-deck";
+import { Split } from "mdx-deck/layouts";
+export { vsDark as theme } from "code-surfer/themes";
+import { StatusGood, StatusInfo } from "grommet-icons";
+import {
+  Code,
+  CodeSurferLayout,
+  Step,
+  CodeSurferColumnLayout
+} from "code-surfer";
+import { TwitterTweetEmbed } from "react-twitter-embed";
+
+import deckTheme, { Layout, Hero, ListItem } from "./src/";
+
+export const themes = [deckTheme];
+const title = "Optimizing heavy image websites in the Gatsby world!";
+<Head>
+  <title>{title}</title>
+</Head>;
+
+<Hero title={title} />
+
+---
+
+<Layout>
+  <Box pad={{ top: "medium" }} gap="small">
+    <Box margin={{ vertical: "medium" }} height="50%">
+      <Image
+        margin="medium"
+        fit="contain"
+        src={require("file-loader!./src/images/me.png")}
+      />
+    </Box>
+    <Appear>
+      <Text>Full stack developer @ Sysdream</Text>
+      <Text>Excited about GraphQL Gatsby and React</Text>
+      <Text>
+        Enjoy travelling and taking pictures (spoiler alert, lots of pictures)
+      </Text>
+      <Text color="brand">Twitter / Github @oorestisime</Text>
+    </Appear>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Image
+      fit="contain"
+      src={require("file-loader!./src/images/workflow.png")}
+    />
+    <Box pad={{ top: "large" }} gap="medium">
+      <Appear>
+        <ListItem text="Pull in source plugins" />
+        <ListItem text="Write some markdown (or mdx)" />
+        <ListItem text="Use awesome gatsby image" />
+        <ListItem text="Deploy to CDN" />
+      </Appear>
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Appear>
+      <Heading margin={{ top: "medium" }} level="2">
+        Everything works great
+      </Heading>
+      <Heading margin="none" alignSelf="end" level="2">
+        Until you hit the netlify time builds!
+      </Heading>
+      <ListItem
+        size="large"
+        margin={{ top: "large" }}
+        text="
+        And this is the narrative behind beating the damn timeout!
+      "
+      />
+      <ListItem text="The different solutions" />
+      <ListItem size="small" text="And the lessons learnt" />
+    </Appear>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Appear>
+    <Box direction="row" justify="between" pad="small">
+      <Box>
+        <Heading
+          border="bottom"
+          alignSelf="center"
+          margin={{ top: "medium" }}
+          level="2"
+        >
+          My use case: oasome.blog
+        </Heading>
+        <Box
+          alignSelf="start"
+          alignContent="start"
+          margin={{ top: "large", left: "medium" }}
+          gap="small"
+        >
+          <ListItem
+            withIcon
+            alignSelf="start"
+            text="Travel blog with infrequent updates"
+          />
+          <ListItem
+            withIcon
+            alignSelf="start"
+            text="Average of 10 pictures per blog post"
+          />
+          <ListItem
+            withIcon
+            alignSelf="start"
+            text="Pictures edited and exported to a 1-2mb size"
+          />
+          <ListItem
+            withIcon
+            alignSelf="start"
+            text="
+            Running gatsby-image on all the images for the blur-up effect and
+            resizing features.
+          "
+          />
+          <ListItem
+            withIcon
+            alignSelf="start"
+            text="Don't spend money over a side-project"
+          />
+        </Box>
+      </Box>
+      <Box>
+        <Heading
+          border="bottom"
+          alignSelf="center"
+          margin={{ top: "medium" }}
+          level="2"
+        >
+          Initial state
+        </Heading>
+        <Box
+          alignSelf="start"
+          alignContent="start"
+          margin={{ top: "large", left: "medium" }}
+          gap="small"
+        >
+          <ListItem
+            withIcon
+            icon={<StatusGood />}
+            alignSelf="start"
+            text="4 articles up and running"
+          />
+          <ListItem
+            icon={<StatusGood />}
+            withIcon
+            alignSelf="start"
+            text="Build at 5 minutes"
+          />
+          <ListItem
+            icon={<StatusGood />}
+            withIcon
+            alignSelf="start"
+            text="Wasn't worried about time limit"
+          />
+          <ListItem
+            icon={<StatusGood />}
+            withIcon
+            alignSelf="start"
+            text="Gatsby develop wasn't slow due to cache"
+          />
+        </Box>
+      </Box>
+    </Box>
+    <Heading alignSelf="center" level="1">
+      And then I published another 2 articles
+    </Heading>
+  </Appear>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="1">
+        Solution 1
+      </Heading>
+    </Box>
+    <ListItem size="xlarge" text="What if we leverage the gatsby cache?" />
+    <Box margin={{ top: "medium" }} height="xsmall" alignSelf="center">
+      <CodeSurferLayout>
+        <Code lang="bash" code={"npm install gatsby-plugin-netlify-cache"} />
+      </CodeSurferLayout>
+    </Box>
+    <Box gap="small" margin={{ top: "medium" }}>
+      <ListItem
+        withIcon
+        Icon={<StatusGood />}
+        text="Worked for several months"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusInfo color="status-warning" />}
+        text="Cache free rebuilds were painfully slow and inconsistent"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusInfo color="status-warning" />}
+        text="Plugin explodes Netlify caching storage"
+      />
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="1">
+        Solution 2
+      </Heading>
+    </Box>
+    <ListItem
+      size="xlarge"
+      text="What if we build on a CI and then push to netlify?"
+    />
+    <Box gap="small" margin={{ top: "medium" }}>
+      <ListItem text="Promising solution since CircleCI doesn't have a time limit (as long as there is output)" />
+      <ListItem text="Avoid using the harmful netlify cache package" />
+      <ListItem
+        withIcon
+        icon={<StatusInfo color="status-warning" />}
+        text="CircleCI OOM due to image processing"
+      />
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="1">
+        Solution 3
+      </Heading>
+    </Box>
+    <ListItem size="xlarge" text="What if we pre-optimize images?" />
+    <Box gap="small" margin={{ top: "medium" }}>
+      <ListItem text="What about image quality?" />
+      <ListItem text="How much time would we really gain?" />
+      <ListItem text="How do we calculate the correct image size?" />
+      <Box alignSelf="center">
+        <TwitterTweetEmbed tweetId={"1096433363261579264"} />
+      </Box>
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="2">
+        But how do we calculate the necessary image dimensions
+      </Heading>
+    </Box>
+    <Box gap="medium">
+      <ListItem
+        size="large"
+        text="By default gatsby generates x2 x4 /2 /4 dimensions"
+      />
+      <ListItem
+        size="large"
+        text="Calculate image container width and resize image to that width"
+      />
+      <ListItem size="large" text="Ask gatsby to generate /2 /4 and x2" />
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="2">
+        Final solution = solution 2 + solution 3
+      </Heading>
+    </Box>
+    <Box gap="medium">
+      <ListItem
+        withIcon
+        icon={<StatusGood size="large" />}
+        size="large"
+        text="Blog directory size reduced from 196MB to 70MB"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusGood size="large" />}
+        size="large"
+        text="CircleCI builds and published new version in roughly 5 minutes"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusGood size="large" />}
+        size="large"
+        text="No need to cache in between builds"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusGood size="large" />}
+        size="large"
+        text="Scales for up to 180 builds per month"
+      />
+      <ListItem
+        withIcon
+        icon={<StatusGood size="large" />}
+        size="large"
+        text="Scales for up to 50 builds per month on a 4x bigger project"
+      />
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box margin={{ top: "xsmall" }} alignSelf="center">
+      <CodeSurferColumnLayout sizes={[1]}>
+        <Step title="Here is the image optimizer">
+          <Code
+            lang="js"
+            code={require("!!raw-loader!./snippets/optimizer.js").default}
+          />
+        </Step>
+        <Step>
+          <Code
+            lang="js"
+            focus="14:28"
+            code={require("!!raw-loader!./snippets/optimizer.js").default}
+          />
+        </Step>
+      </CodeSurferColumnLayout>
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box pad="small">
+    <Box margin={{ top: "xsmall" }} alignSelf="center">
+      <CodeSurferColumnLayout sizes={[1]}>
+        <Step title="CircleCI config.yml">
+          <Code
+            lang="yaml"
+            code={require("!!raw-loader!./snippets/config.yml").default}
+          />
+        </Step>
+        <Step subtitle="Building gatsby">
+          <Code
+            lang="yaml"
+            focus="7:22"
+            code={require("!!raw-loader!./snippets/config.yml").default}
+          />
+        </Step>
+        <Step subtitle="Deploying to netlify">
+          <Code
+            lang="yaml"
+            focus="38:53"
+            code={require("!!raw-loader!./snippets/config.yml").default}
+          />
+        </Step>
+      </CodeSurferColumnLayout>
+    </Box>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <Box gap="small">
+    <Box border="bottom" margin={{ bottom: "large" }}>
+      <Heading alignSelf="center" level="2">
+        Slides proudly built with
+      </Heading>
+    </Box>
+    <Box gap="large">
+      <Text size="xlarge">mdx-deck</Text>
+      <Text size="xlarge">Grommet</Text>
+      <Text size="xlarge">Code surfer</Text>
+      <Text size="xlarge" color="brand">
+        @oorestisime/slides
+      </Text>
+    </Box>
+  </Box>
+</Layout>
