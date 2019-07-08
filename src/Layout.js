@@ -17,6 +17,9 @@ const Layout = ({ children }) => (
           JAMstack Paris
         </Text>
         <Text alignSelf="center" size="large" color="brand">
+          @oorestisime/slides
+        </Text>
+        <Text alignSelf="center" size="large" color="brand">
           @oorestisime
         </Text>
       </Box>

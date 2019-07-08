@@ -3,15 +3,17 @@ import { Appear, Head } from "mdx-deck";
 import { Split } from "mdx-deck/layouts";
 export { vsDark as theme } from "code-surfer/themes";
 import { StatusGood, StatusInfo } from "grommet-icons";
-import {
-  Code,
-  CodeSurferLayout,
-  Step,
-  CodeSurferColumnLayout
-} from "code-surfer";
+import { Code, Step, CodeSurferColumnLayout } from "code-surfer";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-import deckTheme, { Layout, Hero, ListItem } from "./src/";
+import deckTheme, {
+  Layout,
+  Hero,
+  ListItem,
+  PointText,
+  SlideTitle,
+  Command
+} from "./src/";
 
 export const themes = [deckTheme];
 const title = "Optimizing heavy image websites in the Gatsby world!";
@@ -33,12 +35,15 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
       />
     </Box>
     <Appear>
-      <Text>Full stack developer @ Sysdream</Text>
-      <Text>Excited about GraphQL Gatsby and React</Text>
-      <Text>
+      <PointText>Full stack developer @ Sysdream</PointText>
+      <PointText>Excited about GraphQL Gatsby and React</PointText>
+      <PointText>
         Enjoy travelling and taking pictures (spoiler alert, lots of pictures)
-      </Text>
-      <Text color="brand">Twitter / Github @oorestisime</Text>
+      </PointText>
+      <PointText color="brand">Twitter / Github @oorestisime</PointText>
+      <PointText color="brand">
+        https://jamstack-paris.oorestisime.netlify.com
+      </PointText>
     </Appear>
   </Box>
 </Layout>
@@ -46,42 +51,37 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
-  <Box pad="small">
+  <SlideTitle title="Quick introduction on Gatsby" />
+</Layout>
+
+---
+
+<Layout>
+  <Box pad={{ top: "large" }} gap="medium">
     <Image
       fit="contain"
       src={require("file-loader!./src/images/workflow.png")}
     />
-    <Box pad={{ top: "large" }} gap="medium">
-      <Appear>
-        <ListItem text="Pull in source plugins" />
-        <ListItem text="Write some markdown (or mdx)" />
-        <ListItem text="Use awesome gatsby image" />
-        <ListItem text="Deploy to CDN" />
-      </Appear>
-    </Box>
   </Box>
+  <Appear>
+    <PointText>Pull in source plugins</PointText>
+    <PointText>Write some markdown (or mdx)</PointText>
+    <PointText>Use awesome gatsby image</PointText>
+    <PointText>Deploy to CDN</PointText>
+  </Appear>
 </Layout>
 
 ---
 
 <Layout>
-  <Box pad="small">
+  <SlideTitle title="Everything works great ..... Until you hit the Netlify time builds!" />
+  <Box pad={{ top: "medium" }} gap="medium">
     <Appear>
-      <Heading margin={{ top: "medium" }} level="2">
-        Everything works great
-      </Heading>
-      <Heading margin="none" alignSelf="end" level="2">
-        Until you hit the netlify time builds!
-      </Heading>
-      <ListItem
-        size="large"
-        margin={{ top: "large" }}
-        text="
+      <PointText>
         And this is the narrative behind beating the damn timeout!
-      "
-      />
-      <ListItem text="The different solutions" />
-      <ListItem size="small" text="And the lessons learnt" />
+      </PointText>
+      <PointText>The different solutions</PointText>
+      <PointText>And the lessons learnt</PointText>
     </Appear>
   </Box>
 </Layout>
@@ -89,23 +89,14 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
+  <SlideTitle title="The use case" />
   <Appear>
-    <Box direction="row" justify="between" pad="small">
-      <Box>
-        <Heading
-          border="bottom"
-          alignSelf="center"
-          margin={{ top: "medium" }}
-          level="2"
-        >
-          My use case: oasome.blog
+    <Box direction="row" margin={{ horizontal: "xlarge", bottom: "medium" }}>
+      <Box basis="2/3">
+        <Heading alignSelf="start" margin="none" level="2">
+          oasome.blog
         </Heading>
-        <Box
-          alignSelf="start"
-          alignContent="start"
-          margin={{ top: "large", left: "medium" }}
-          gap="small"
-        >
+        <Box margin={{ top: "large", left: "medium" }} gap="small">
           <ListItem
             withIcon
             alignSelf="start"
@@ -125,7 +116,7 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
             withIcon
             alignSelf="start"
             text="
-            Running gatsby-image on all the images for the blur-up effect and
+            Running gatsby-image for the blur-up effect and
             resizing features.
           "
           />
@@ -136,21 +127,11 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
           />
         </Box>
       </Box>
-      <Box>
-        <Heading
-          border="bottom"
-          alignSelf="center"
-          margin={{ top: "medium" }}
-          level="2"
-        >
+      <Box basis="1/3">
+        <Heading alignSelf="start" margin="none" level="2">
           Initial state
         </Heading>
-        <Box
-          alignSelf="start"
-          alignContent="start"
-          margin={{ top: "large", left: "medium" }}
-          gap="small"
-        >
+        <Box margin={{ top: "large", left: "medium" }} gap="small">
           <ListItem
             withIcon
             icon={<StatusGood />}
@@ -187,59 +168,69 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
-  <Box pad="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="1">
-        Solution 1
-      </Heading>
-    </Box>
-    <ListItem size="xlarge" text="What if we leverage the gatsby cache?" />
-    <Box margin={{ top: "medium" }} height="xsmall" alignSelf="center">
-      <CodeSurferLayout>
-        <Code lang="bash" code={"npm install gatsby-plugin-netlify-cache"} />
-      </CodeSurferLayout>
-    </Box>
-    <Box gap="small" margin={{ top: "medium" }}>
-      <ListItem
-        withIcon
-        Icon={<StatusGood />}
-        text="Worked for several months"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusInfo color="status-warning" />}
-        text="Cache free rebuilds were painfully slow and inconsistent"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusInfo color="status-warning" />}
-        text="Plugin explodes Netlify caching storage"
-      />
-    </Box>
-  </Box>
-</Layout>
-
----
-
-<Layout>
-  <Box pad="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="1">
-        Solution 2
-      </Heading>
-    </Box>
+  <SlideTitle title="Solution 1: leveraging the Netlify cache" />
+  <PointText size="xlarge">
+    What if we leverage the gatsby cache in Netlify?
+  </PointText>
+  <Command code="npm install gatsby-plugin-netlify-cache" />
+  <Box gap="medium" margin={{ top: "medium" }}>
     <ListItem
-      size="xlarge"
-      text="What if we build on a CI and then push to netlify?"
+      size="large"
+      withIcon
+      Icon={<StatusGood />}
+      text="Worked for several months"
     />
-    <Box gap="small" margin={{ top: "medium" }}>
-      <ListItem text="Promising solution since CircleCI doesn't have a time limit (as long as there is output)" />
-      <ListItem text="Avoid using the harmful netlify cache package" />
-      <ListItem
-        withIcon
-        icon={<StatusInfo color="status-warning" />}
-        text="CircleCI OOM due to image processing"
-      />
+    <ListItem
+      size="large"
+      withIcon
+      icon={<StatusInfo color="status-warning" />}
+      text="Cache free rebuilds were painfully slow and inconsistent"
+    />
+    <ListItem
+      size="large"
+      withIcon
+      icon={<StatusInfo color="status-warning" />}
+      text="Plugin explodes Netlify caching storage"
+    />
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <SlideTitle title="Solution 2: building on a CI" />
+  <PointText size="xlarge">
+    What if we build on a CI and then push to netlify?
+  </PointText>
+  <Command code="npm install netlify-cli" />
+  <Box gap="medium" margin={{ top: "medium" }}>
+    <ListItem
+      size="large"
+      text="Promising solution since CircleCI doesn't have a time limit (as long as there is output)"
+    />
+    <ListItem
+      size="large"
+      text="Avoid using the harmful netlify cache package"
+    />
+    <ListItem
+      withIcon
+      size="large"
+      icon={<StatusInfo color="status-warning" />}
+      text="CircleCI OOM due to image processing"
+    />
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <SlideTitle title="Solution 3: pre-optimize images" />
+  <Box gap="medium" margin={{ top: "medium" }}>
+    <ListItem size="large" text="What about image quality?" />
+    <ListItem size="large" text="How much time would we really gain?" />
+    <ListItem size="large" text="How do we calculate the correct image size?" />
+    <Box alignSelf="center">
+      <TwitterTweetEmbed tweetId={"1096433363261579264"} />
     </Box>
   </Box>
 </Layout>
@@ -247,88 +238,43 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
-  <Box pad="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="1">
-        Solution 3
-      </Heading>
-    </Box>
-    <ListItem size="xlarge" text="What if we pre-optimize images?" />
-    <Box gap="small" margin={{ top: "medium" }}>
-      <ListItem text="What about image quality?" />
-      <ListItem text="How much time would we really gain?" />
-      <ListItem text="How do we calculate the correct image size?" />
-      <Box alignSelf="center">
-        <TwitterTweetEmbed tweetId={"1096433363261579264"} />
-      </Box>
-    </Box>
-  </Box>
+  <SlideTitle title="But how do we calculate the necessary image dimensions?" />
+  <PointText>By default gatsby generates x2 x4 /2 /4 dimensions</PointText>
+  <PointText>
+    Calculate image container width and resize image to that width
+  </PointText>
+  <PointText>Ask gatsby to generate / 2 / 4 and x 2</PointText>
 </Layout>
 
 ---
 
 <Layout>
-  <Box pad="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="2">
-        But how do we calculate the necessary image dimensions
-      </Heading>
-    </Box>
-    <Box gap="medium">
-      <ListItem
-        size="large"
-        text="By default gatsby generates x2 x4 /2 /4 dimensions"
-      />
-      <ListItem
-        size="large"
-        text="Calculate image container width and resize image to that width"
-      />
-      <ListItem size="large" text="Ask gatsby to generate /2 /4 and x2" />
-    </Box>
-  </Box>
-</Layout>
-
----
-
-<Layout>
-  <Box pad="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="2">
-        Final solution = solution 2 + solution 3
-      </Heading>
-    </Box>
-    <Box gap="medium">
-      <ListItem
-        withIcon
-        icon={<StatusGood size="large" />}
-        size="large"
-        text="Blog directory size reduced from 196MB to 70MB"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusGood size="large" />}
-        size="large"
-        text="CircleCI builds and published new version in roughly 5 minutes"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusGood size="large" />}
-        size="large"
-        text="No need to cache in between builds"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusGood size="large" />}
-        size="large"
-        text="Scales for up to 180 builds per month"
-      />
-      <ListItem
-        withIcon
-        icon={<StatusGood size="large" />}
-        size="large"
-        text="Scales for up to 50 builds per month on a 4x bigger project"
-      />
-    </Box>
+  <SlideTitle title="Final solution = solution 2 + solution 3" />
+  <Box gap="medium">
+    <ListItem withIcon icon={<StatusGood size="large" />}>
+      <Text>Blog directory size reduced from 196MB to </Text>
+      <Text color="brand">70MB</Text>
+    </ListItem>
+    <ListItem withIcon icon={<StatusGood size="large" />}>
+      <Text>CircleCI builds and published new version in </Text>
+      <Text color="brand">roughly 5 minutes </Text>
+    </ListItem>
+    <ListItem
+      withIcon
+      icon={<StatusGood size="large" />}
+      size="large"
+      text="No need to cache in between builds"
+    />
+    <ListItem withIcon icon={<StatusGood size="large" />}>
+      <Text>Scales for up to </Text>
+      <Text color="brand">180 builds per month</Text>
+    </ListItem>
+    <ListItem
+      withIcon
+      icon={<StatusGood size="large" />}
+      size="large"
+      text="Scales for up to 50 builds per month on a 4x bigger project"
+    />
   </Box>
 </Layout>
 
@@ -390,19 +336,32 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
-  <Box gap="small">
-    <Box border="bottom" margin={{ bottom: "large" }}>
-      <Heading alignSelf="center" level="2">
-        Slides proudly built with
-      </Heading>
-    </Box>
-    <Box gap="large">
-      <Text size="xlarge">mdx-deck</Text>
-      <Text size="xlarge">Grommet</Text>
-      <Text size="xlarge">Code surfer</Text>
-      <Text size="xlarge" color="brand">
-        @oorestisime/slides
-      </Text>
-    </Box>
+  <SlideTitle title="What's next?" />
+  <Box gap="medium">
+    <PointText>
+      Post Netlify preview URL in PR to avoid checking the CircleCI logs
+    </PointText>
+    <PointText>
+      Experiment with keeping original images in github and running the optimize
+      script before gatsby build
+    </PointText>
+    <PointText>Cache in CircleCI gatsby build for even better speed</PointText>
+  </Box>
+</Layout>
+
+---
+
+<Layout>
+  <SlideTitle title="Questions?" />
+  <PointText size="xlarge">
+    Many thanks to the following projects that enabled the presentation
+  </PointText>
+  <Box margin={{ top: "medium" }} gap="small">
+    <PointText>Gatsby</PointText>
+    <PointText>Netlify</PointText>
+    <PointText>CircleCI</PointText>
+    <PointText>mdx-deck</PointText>
+    <PointText>Grommet</PointText>
+    <PointText>Code surfer</PointText>
   </Box>
 </Layout>

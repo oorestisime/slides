@@ -91,9 +91,9 @@ export default {
   colors: {
     text: "rgb(248, 248, 248)",
     background: "rgb(85, 85, 85)",
-    link: "rgb(137, 189, 211)",
+    link: brand,
     pre: "#fff",
-    preBackground: "rgb(137, 189, 211)",
+    preBackground: brand,
     code: "#fff"
   }
 };
