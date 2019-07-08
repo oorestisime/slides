@@ -3,7 +3,6 @@ import { Appear, Head } from "mdx-deck";
 import { Split } from "mdx-deck/layouts";
 export { vsDark as theme } from "code-surfer/themes";
 import { StatusGood, StatusInfo } from "grommet-icons";
-import { Code, Step, CodeSurferColumnLayout } from "code-surfer";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
 import deckTheme, {
@@ -12,7 +11,8 @@ import deckTheme, {
   ListItem,
   PointText,
   SlideTitle,
-  Command
+  Command,
+  Coder
 } from "./src/";
 
 export const themes = [deckTheme];
@@ -281,56 +281,46 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 ---
 
 <Layout>
-  <Box pad="small">
-    <Box margin={{ top: "xsmall" }} alignSelf="center">
-      <CodeSurferColumnLayout sizes={[1]}>
-        <Step title="Here is the image optimizer">
-          <Code
-            lang="js"
-            code={require("!!raw-loader!./snippets/optimizer.js").default}
-          />
-        </Step>
-        <Step>
-          <Code
-            lang="js"
-            focus="14:28"
-            code={require("!!raw-loader!./snippets/optimizer.js").default}
-          />
-        </Step>
-      </CodeSurferColumnLayout>
-    </Box>
-  </Box>
+  <Coder
+    data={[
+      {
+        title: "Here is the image optimizer",
+        lang: "js",
+        code: require("!!raw-loader!./snippets/optimizer.js").default
+      },
+      {
+        lang: "js",
+        focus: "14:28",
+        code: require("!!raw-loader!./snippets/optimizer.js").default
+      }
+    ]}
+  />
 </Layout>
 
 ---
 
 <Layout>
-  <Box pad="small">
-    <Box margin={{ top: "xsmall" }} alignSelf="center">
-      <CodeSurferColumnLayout sizes={[1]}>
-        <Step title="CircleCI config.yml">
-          <Code
-            lang="yaml"
-            code={require("!!raw-loader!./snippets/config.yml").default}
-          />
-        </Step>
-        <Step subtitle="Building gatsby">
-          <Code
-            lang="yaml"
-            focus="7:22"
-            code={require("!!raw-loader!./snippets/config.yml").default}
-          />
-        </Step>
-        <Step subtitle="Deploying to netlify">
-          <Code
-            lang="yaml"
-            focus="38:53"
-            code={require("!!raw-loader!./snippets/config.yml").default}
-          />
-        </Step>
-      </CodeSurferColumnLayout>
-    </Box>
-  </Box>
+  <Coder
+    data={[
+      {
+        title: "CircleCI config.yml",
+        lang: "yaml",
+        code: require(`!!raw-loader!./snippets/config.yml`).default
+      },
+      {
+        title: "Building gatsby",
+        lang: "yaml",
+        focus: "7:22",
+        code: require(`!!raw-loader!./snippets/config.yml`).default
+      },
+      {
+        title: "Deploying to Netlify",
+        lang: "yaml",
+        focus: "38:53",
+        code: require(`!!raw-loader!./snippets/config.yml`).default
+      }
+    ]}
+  />
 </Layout>
 
 ---
