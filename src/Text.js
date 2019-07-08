@@ -47,3 +47,11 @@ export const SlideTitle = ({ title }) => (
     <Text size="xxlarge">{title}</Text>
   </Box>
 );
+
+export const Points = ({ data }) => (
+  <Box gap="medium">
+    {data.map(d => (
+      <PointText>{d}</PointText>
+    ))}
+  </Box>
+);

@@ -12,7 +12,8 @@ import deckTheme, {
   PointText,
   SlideTitle,
   Command,
-  Coder
+  Coder,
+  Points
 } from "./src/";
 
 export const themes = [deckTheme];
@@ -239,11 +240,13 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 
 <Layout>
   <SlideTitle title="But how do we calculate the necessary image dimensions?" />
-  <PointText>By default gatsby generates x2 x4 /2 /4 dimensions</PointText>
-  <PointText>
-    Calculate image container width and resize image to that width
-  </PointText>
-  <PointText>Ask gatsby to generate / 2 / 4 and x 2</PointText>
+  <Points
+    data={[
+      "By default gatsby generates x2 x4 /2 /4 dimensions",
+      "Calculate image container width and resize image to that width",
+      "Ask gatsby to generate / 2 / 4 and x 2"
+    ]}
+  />
 </Layout>
 
 ---
@@ -327,16 +330,16 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
 
 <Layout>
   <SlideTitle title="What's next?" />
-  <Box gap="medium">
-    <PointText>
-      Post Netlify preview URL in PR to avoid checking the CircleCI logs
-    </PointText>
-    <PointText>
-      Experiment with keeping original images in github and running the optimize
-      script before gatsby build
-    </PointText>
-    <PointText>Cache in CircleCI gatsby build for even better speed</PointText>
-  </Box>
+  <Points
+    data={[
+      "Post Netlify preview URL in PR to avoid checking the CircleCI logs",
+      "Experiment with keeping original images in github and running the optimize script before gatsby build",
+      "Cache in CircleCI gatsby build for even better speed",
+      "mdx-deck",
+      "Grommet",
+      "Code surfer"
+    ]}
+  />
 </Layout>
 
 ---
@@ -346,12 +349,14 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
   <PointText size="xlarge">
     Many thanks to the following projects that enabled the presentation
   </PointText>
-  <Box margin={{ top: "medium" }} gap="small">
-    <PointText>Gatsby</PointText>
-    <PointText>Netlify</PointText>
-    <PointText>CircleCI</PointText>
-    <PointText>mdx-deck</PointText>
-    <PointText>Grommet</PointText>
-    <PointText>Code surfer</PointText>
-  </Box>
+  <Points
+    data={[
+      "Gatsby",
+      "Netlify",
+      "CircleCi",
+      "mdx-deck",
+      "Grommet",
+      "Code surfer"
+    ]}
+  />
 </Layout>
