@@ -2,7 +2,7 @@ import React from "react";
 import { Grommet, Box, Text } from "grommet";
 import { customTheme } from "./theme";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, conference }) => (
   <Grommet full theme={customTheme}>
     <Box background="dark-2" height="100vh">
       <Box height="90vh">{children}</Box>
@@ -14,7 +14,7 @@ const Layout = ({ children }) => (
         justify="between"
       >
         <Text alignSelf="center" size="large" color="brand">
-          JAMstack Paris
+          {conference}
         </Text>
         <Text alignSelf="center" size="large" color="brand">
           @oorestisime/slides

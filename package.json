@@ -1,24 +1,32 @@
 {
-  "name": "presentation-template",
+  "name": "slides",
   "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx",
-    "help": "mdx-deck"
-  },
-  "keywords": [],
+  "description": "mdx-deck templates and slides",
+  "main": "index.js",
+  "repository": "git@github.com:oorestisime/slides.git",
   "author": "Orestis Ioannou <oorestisime@gmail.com>",
-  "dependencies": {
-    "code-surfer": "2.0.0-alpha.6",
-    "file-loader": "^4.0.0",
-    "grommet": "^2.7.1",
-    "mdx-deck": "^2.3.2",
-    "prism-react-renderer": "^0.1.6",
-    "raw-loader": "^3.0.0",
-    "react-syntax-highlighter": "^10.3.0",
-    "react-twitter-embed": "^2.0.8",
-    "styled-components": "^4.3.1",
-    "typeface-montserrat": "^0.0.54"
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "jamstack-paris-2019",
+    "mdx-components"
+  ],
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "lerna": "^3.8.5",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

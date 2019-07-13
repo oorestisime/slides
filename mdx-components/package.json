@@ -1,0 +1,17 @@
+{
+  "name": "mdx-components",
+  "version": "1.0.0",
+  "description": "Grommet empowered components for mdx-deck presentations",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "code-surfer": "^0.5.5",
+    "grommet": "^2.7.3",
+    "grommet-icons": "^4.2.0",
+    "react": "^16.8.6",
+    "react-syntax-highlighter": "^11.0.2"
+  },
+  "dependencies": {
+    "typeface-montserrat": "^0.0.54"
+  }
+}
