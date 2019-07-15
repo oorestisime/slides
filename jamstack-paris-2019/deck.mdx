@@ -26,7 +26,7 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
   />
 </Head>;
 
-<Hero title={title} />
+<Hero conference="JAMstack Paris 2019" title={title} />
 
 ---
 
@@ -348,13 +348,14 @@ const title = "Optimizing heavy image websites in the Gatsby world!";
     Many thanks to the following projects that enabled the presentation
   </PointText>
   <Points
-    data={[
-      "Gatsby",
-      "Netlify",
-      "CircleCi",
-      "mdx-deck",
-      "Grommet",
-      "Code surfer"
-    ]}
+    margin={{ top: "large" }}
+    alignSelf="center"
+    direction="row"
+    data={["Gatsby", "Netlify", "CircleCi"]}
+  />
+  <Points
+    alignSelf="center"
+    direction="row"
+    data={["mdx-deck", "Grommet", "Code surfer"]}
   />
 </Layout>

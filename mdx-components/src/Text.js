@@ -48,8 +48,8 @@ export const SlideTitle = ({ title }) => (
   </Box>
 );
 
-export const Points = ({ data }) => (
-  <Box gap="medium">
+export const Points = ({ data, inline, ...rest }) => (
+  <Box gap="medium" {...rest}>
     {data.map(d => (
       <PointText>{d}</PointText>
     ))}
