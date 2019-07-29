@@ -15,3 +15,7 @@ Presentation utils and slides configured in yarn workspaces
 - code surfer
 - Grommet
 - Netlify
+
+# Status
+
+JAMstack paris 2019 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5120843-f0ca-4a0f-9763-7643287774ac/deploy-status)](https://app.netlify.com/sites/jamstack-paris-oorestisime/deploys)
