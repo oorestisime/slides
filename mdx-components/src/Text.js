@@ -1,12 +1,13 @@
 import React from "react";
-import { Text, Box } from "grommet";
+import { Text, Box, Heading } from "grommet";
 import { Actions } from "grommet-icons";
 
-function renderIcon({ withIcon, icon, iconSize, iconColor }) {
+function renderIcon({ withIcon, Icon, iconSize, iconColor }) {
+  const Component = Icon || Actions;
   if (!withIcon) {
     return;
   }
-  return icon || <Actions color={iconColor} size={iconSize} />;
+  return <Component color={iconColor} size={iconSize} />;
 }
 
 export const ListItem = ({
@@ -14,15 +15,22 @@ export const ListItem = ({
   alignSelf = "center",
   withIcon = false,
   icon,
-  iconSize = "medium",
+  Icon,
+  iconSize = "large",
   iconColor,
   children,
   ...rest
 }) => (
-  <Box alignSelf={alignSelf} gap="small" align="center" direction="row">
-    {renderIcon({ withIcon, icon, iconSize, iconColor })}
+  <Box
+    margin="medium"
+    alignSelf={alignSelf}
+    gap="small"
+    align="center"
+    direction="row"
+  >
+    {renderIcon({ withIcon, icon, Icon, iconSize, iconColor })}
     {text && (
-      <Text size="medium" {...rest}>
+      <Text size="xxlarge" {...rest}>
         {text}
       </Text>
     )}
@@ -31,27 +39,28 @@ export const ListItem = ({
 );
 
 export const PointText = ({ children, ...rest }) => (
-  <Text size="large" margin="xsmall" {...rest}>
+  <Text size="xxlarge" margin="medium" {...rest}>
     {children}
   </Text>
 );
 
 export const SlideTitle = ({ title }) => (
   <Box
-    alignSelf="center"
     fill="horizontal"
     pad="medium"
     margin={{ bottom: "large" }}
     border="bottom"
   >
-    <Text size="xxlarge">{title}</Text>
+    <Heading alignSelf="center" level="1">
+      {title}
+    </Heading>
   </Box>
 );
 
-export const Points = ({ data, inline, ...rest }) => (
+export const Points = ({ data, inline, textProps, ...rest }) => (
   <Box gap="medium" {...rest}>
     {data.map(d => (
-      <PointText>{d}</PointText>
+      <PointText {...textProps}>{d}</PointText>
     ))}
   </Box>
 );
